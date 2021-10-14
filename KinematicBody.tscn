@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="CubeMesh" id=6]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 9.07037, 1, 8.78032 )
+
+[node name="shit" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.312181, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87707, 11 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.71664, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 4 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Area"]
+transform = Transform( 9.16538, 0, 0, 0, 1, 0, 0, 0, 8.90781, 0, 0, 0 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 5 )

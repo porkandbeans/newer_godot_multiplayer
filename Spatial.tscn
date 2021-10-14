@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="Skin" id=5]
+
+[sub_resource type="ShaderMaterial" id=6]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Static fucker" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0960948, 0 )
+input_capture_on_drag = true
+
+[node name="CollisionShape" type="CollisionShape" parent="Static fucker"]
+transform = Transform( 3.37921, 0, 0, 0, 0.11552, 0, 0, 0, 3.88239, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Static fucker"]
+transform = Transform( 3.37921, 0, 0, 0, 0.10581, 0, 0, 0, 3.88239, 0, 0, 0 )
+mesh = SubResource( 2 )
+skin = SubResource( 5 )
+material/0 = SubResource( 6 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.044632, 6.24936, -0.278926 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8 )
