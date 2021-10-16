@@ -5,8 +5,8 @@ remote func _set_position(pos, rot):
 	rotation_degrees = rot
 
 var max_speed = 4
-var gravity = 70
-var jump_impulse = 25
+var gravity = 5
+var jump_impulse = 7
 
 var velocity =- Vector3.ZERO
 
@@ -35,9 +35,9 @@ func apply_movement(input_vector):
 	velocity.x = input_vector.x * max_speed
 	velocity.z = input_vector.z * max_speed
 	
-	if is_network_master():
-		if input_vector != Vector3.ZERO:
-			pivot.look_at(translation + input_vector, Vector3.UP)
+	#if is_network_master():
+	if input_vector != Vector3.ZERO:
+		pivot.look_at(translation + input_vector, Vector3.UP)
 	
 	
 func apply_gravity(delta):
