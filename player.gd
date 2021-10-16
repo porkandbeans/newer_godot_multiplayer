@@ -1,16 +1,19 @@
 extends KinematicBody
 
+onready var camera = $Camera
+
 var speed = 5
 
 var direction = Vector3()
 
 func _ready():
-	pass
-
+	if is_network_master():
+		camera.makecurrent()
+	
 remote func _set_position(pos):
 	global_transform.origin = pos
-
-func _physics_process(_delta):
+	
+func _physics_process(delta):
 	direction = Vector3()
 	
 	if Input.is_action_pressed("ui_left"):
