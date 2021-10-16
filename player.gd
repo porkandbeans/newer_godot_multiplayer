@@ -8,6 +8,9 @@ var direction = Vector3()
 
 func _ready():
 	pass
+	
+remote func _set_position(pos):
+	global_transform.origin = pos
 
 func _physics_process(delta):
 	var input_vector = get_input_vector()
@@ -30,9 +33,6 @@ func apply_movement(input_vector):
 	
 func apply_gravity(delta):
 	direction.y -= gravity * delta
-
-remote func _set_position(pos):
-	global_transform.origin = pos
 
 	
 	if direction != Vector3():
