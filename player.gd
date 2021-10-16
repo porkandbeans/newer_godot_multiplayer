@@ -1,15 +1,20 @@
 extends KinematicBody
 
-remote func _set_position(pos, rot):
+remote func _set_position(pos):
 	global_transform.origin = pos
-	rotation_degrees = rot
+	#set_rotation_degrees(rot)
+	#pivot.look_at(rot, Vector3.UP)
+
+remote func _set_rotation(rot: Vector3):
+	pivot.look_at(rot, Vector3.UP)
 
 var max_speed = 4
 var gravity = 70
 var jump_impulse = 25
 
-var velocity =- Vector3.ZERO
+var look_position
 
+var velocity =- Vector3.ZERO
 
 onready var pivot = $Pivot
 
@@ -37,7 +42,10 @@ func apply_movement(input_vector):
 	
 	if is_network_master():
 		if input_vector != Vector3.ZERO:
+			
 			pivot.look_at(translation + input_vector, Vector3.UP)
+			look_position = translation + input_vector
+			rpc_unreliable("_set_rotation", look_position)
 	
 	
 func apply_gravity(delta):
@@ -47,7 +55,7 @@ func apply_gravity(delta):
 	if velocity != Vector3.ZERO:
 		if is_network_master():
 			move_and_slide(velocity * max_speed, Vector3.UP)
-			rpc_unreliable("_set_position", global_transform.origin, rotation_degrees)
+			rpc_unreliable("_set_position", global_transform.origin)
 
 func jump():
 	if is_on_floor() and Input.is_action_just_pressed("Jump"):
