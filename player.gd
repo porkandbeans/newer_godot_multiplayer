@@ -6,13 +6,13 @@ var jump_impulse = 25
 
 var velocity =- Vector3.ZERO
 
+remote func _set_position(pos):
+	global_transform.origin = pos
+
 onready var pivot = $Pivot
 
 func _ready():
 	pass
-	
-remote func _set_position(pos):
-	global_transform.origin = pos
 
 func _physics_process(delta):
 	var input_vector = get_input_vector()
