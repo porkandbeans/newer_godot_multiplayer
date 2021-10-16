@@ -1,13 +1,14 @@
 extends KinematicBody
 
+remote func _set_position(pos):
+	global_transform.origin = pos
+
 var max_speed = 4
 var gravity = 70
 var jump_impulse = 25
 
 var velocity =- Vector3.ZERO
 
-remote func _set_position(pos):
-	global_transform.origin = pos
 
 onready var pivot = $Pivot
 
