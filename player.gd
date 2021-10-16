@@ -34,7 +34,7 @@ func apply_movement(input_vector):
 	velocity.z = input_vector.z * max_speed
 	
 	if input_vector != Vector3.ZERO:
-		pivot.look_at(Translation + input_vector, Vector3.UP)
+		pivot.look_at(translation + input_vector, Vector3.UP)
 	
 	
 func apply_gravity(delta):
