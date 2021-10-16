@@ -16,7 +16,7 @@ script = ExtResource( 1 )
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="MeshInstance2" type="MeshInstance" parent="Pivot"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.844008, 1.10181 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.844008, -0.950715 )
 mesh = SubResource( 3 )
 material/0 = null
 
