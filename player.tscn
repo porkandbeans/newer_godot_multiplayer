@@ -1,5 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
+
 [ext_resource path="res://player.gd" type="Script" id=1]
 
 [sub_resource type="CubeMesh" id=1]
@@ -9,6 +10,7 @@
 [sub_resource type="SpatialMaterial" id=3]
 
 [sub_resource type="CapsuleShape" id=4]
+
 
 [node name="player" type="KinematicBody"]
 script = ExtResource( 1 )
