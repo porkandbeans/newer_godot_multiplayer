@@ -25,5 +25,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="."]
+margin_left = 360.0
+margin_top = 318.0
+margin_right = 664.0
+margin_bottom = 376.0
+text = "Join (local)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="ButtonHost" to="." method="_on_ButtonHost_pressed"]
 [connection signal="pressed" from="ButtonJoin" to="." method="_on_ButtonJoin_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_ButtonJoinLocal_pressed"]

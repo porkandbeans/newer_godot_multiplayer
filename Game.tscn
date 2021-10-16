@@ -16,11 +16,11 @@ transform = Transform( 92.049, 0, 0, 0, 0.0717606, 0, 0, 0, 44.2248, 0, 0, 0 )
 physics_material_override = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
 mesh = SubResource( 3 )
 material/0 = null
 
@@ -29,3 +29,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68343, 1.70815, 0 )
 
 [node name="player2Pos" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54483, 1.70815, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.910301, 0.413947, 0, -0.413947, 0.910301, 0, 20.6708, 54.6681 )
+current = true
