@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Chatroom.gd" type="Script" id=1]
+
+[node name="Chatroom" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SetUp" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="LeaveButton" type="Button" parent="SetUp"]
+margin_left = 62.6189
+margin_top = 418.905
+margin_right = 195.619
+margin_bottom = 457.905
+text = "Leave"
+
+[node name="JoinButton" type="Button" parent="SetUp"]
+margin_left = 62.722
+margin_top = 509.713
+margin_right = 195.722
+margin_bottom = 550.713
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HostButton" type="Button" parent="SetUp"]
+margin_left = 61.7978
+margin_top = 465.282
+margin_right = 195.798
+margin_bottom = 504.282
+text = "Host"
+
+[node name="IpEnter" type="LineEdit" parent="SetUp"]
+margin_left = 207.0
+margin_top = 511.917
+margin_right = 447.0
+margin_bottom = 548.917
+text = "127.0.0.1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 222.0
+margin_top = 43.0
+margin_right = 975.0
+margin_bottom = 483.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="Panel"]
+margin_left = 9.0
+margin_top = 6.0
+margin_right = 743.0
+margin_bottom = 307.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+margin_left = 9.0
+margin_top = 313.0
+margin_right = 742.0
+margin_bottom = 426.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="SetUp/LeaveButton" to="." method="_on_LeaveButton_button_up"]
+[connection signal="button_up" from="SetUp/JoinButton" to="." method="_on_JoinButton_button_up"]
+[connection signal="button_up" from="SetUp/HostButton" to="." method="_on_HostButton_button_up"]

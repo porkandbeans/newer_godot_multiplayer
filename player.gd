@@ -32,7 +32,7 @@ remote func _set_position(pos):
 	global_transform.origin = pos
 
 	
-	if velocity != Vector3.ZERO:
+	if velocity != Vector3():
 		if is_network_master():
 			move_and_slide(velocity * max_speed, Vector3.UP)
 			rpc_unreliable("_set_position", global_transform.origin)
