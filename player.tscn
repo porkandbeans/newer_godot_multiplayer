@@ -17,3 +17,6 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, -0.0489718, -0.9988, 0, 0.9988, -0.0489718, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.888993, 0.45792, 0, -0.45792, 0.888993, 0.0448952, 2.25963, 3.53487 )

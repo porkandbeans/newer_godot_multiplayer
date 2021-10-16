@@ -17,6 +17,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68343, 1.70815, 0 )
 
 [node name="player2Pos" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54483, 1.70815, 0 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50526, 5.31751 )
