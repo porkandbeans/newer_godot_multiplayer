@@ -35,13 +35,16 @@ func _physics_process(delta):
 	if is_on_floor():
 		jump_num = 0
 	var input_vector = get_input_vector()
+	
+	if Input.is_action_pressed("sprint"):
+		speed = run_speed
+		
 	apply_movement(input_vector)
 	apply_gravity(delta)
 	jump()
 	velocity = move_and_slide(velocity, Vector3.UP)
 	 
-	if Input.is_action_pressed("sprint"):
-		speed = run_speed
+	
 	
 func get_input_vector():
 	var input_vector = Vector3.ZERO
