@@ -36,12 +36,12 @@ func _physics_process(delta):
 		jump_num = 0
 	var input_vector = get_input_vector()
 	apply_movement(input_vector)
+	if Input.is_action_pressed("sprint"):
+		speed = run_speed
 	apply_gravity(delta)
 	jump()
 	velocity = move_and_slide(velocity, Vector3.UP)
 	 
-	if Input.is_action_pressed("sprint"):
-		speed = run_speed
 	
 func get_input_vector():
 	var input_vector = Vector3.ZERO
@@ -68,7 +68,7 @@ func apply_gravity(delta):
 	
 	if velocity != Vector3.ZERO:
 		if is_network_master():
-			move_and_slide(velocity * speed, Vector3.UP)
+			move_and_slide(velocity * walk_speed, Vector3.UP)
 			rpc_unreliable("_set_position", global_transform.origin)
 
 func jump():
