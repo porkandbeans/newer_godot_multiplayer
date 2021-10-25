@@ -9,6 +9,8 @@ remote func _set_position(pos):
 remote func _set_rotation(rot: Vector3):
 	if (Globals.online):
 		pivot.look_at(rot, Vector3.UP)
+		pivot.rotation.x = 0
+		pivot.rotation.z = 0
 
 func add_stamina(value):
 	stamina += value
@@ -36,7 +38,6 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	
 	speed = walk_speed
 	
 	if is_on_floor():
