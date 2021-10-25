@@ -8,9 +8,14 @@ remote func _set_position(pos):
 remote func _set_rotation(rot: Vector3):
 	pivot.look_at(rot, Vector3.UP)
 
+func add_stamina(value):
+	stamina += value
+
+var max_stamina = 50
+var stamina = 50
 var speed
-var walk_speed = 8
-var run_speed = 16
+var walk_speed = 6
+var run_speed = 13
 #var running = false
 
 var gravity = 25
@@ -35,14 +40,15 @@ func _physics_process(delta):
 	if is_on_floor():
 		jump_num = 0
 	var input_vector = get_input_vector()
-	apply_movement(input_vector)
+	
 	if Input.is_action_pressed("sprint"):
 		speed = run_speed
+		
+	apply_movement(input_vector)
 	apply_gravity(delta)
 	jump()
 	velocity = move_and_slide(velocity, Vector3.UP)
-	 
-	
+
 func get_input_vector():
 	var input_vector = Vector3.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -68,7 +74,7 @@ func apply_gravity(delta):
 	
 	if velocity != Vector3.ZERO:
 		if is_network_master():
-			move_and_slide(velocity * walk_speed, Vector3.UP)
+			move_and_slide(velocity * 4, Vector3.UP)
 			rpc_unreliable("_set_position", global_transform.origin)
 
 func jump():
@@ -76,9 +82,10 @@ func jump():
 		if jump_num == 0:
 			velocity.y = jump_impulse
 			jump_num = 1
+			stamina -= 10
 
 	if not is_on_floor() and Input.is_action_just_pressed("Jump"):
-		if jump_num == 1:
+		if  jump_num <= stamina:
 			velocity.y = jump_impulse
-			jump_num = 2
-			
+			jump_num += 1
+			stamina -= 10
