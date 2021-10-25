@@ -30,8 +30,28 @@ var velocity =- Vector3.ZERO
 
 onready var pivot = $Pivot
 
-func _ready():
-	pass
+
+func _physics_process(delta):
+	var input_vector = get_input_vector()
+	apply_movement(input_vector)
+	apply_gravity(delta)
+	direction = move_and_slide(direction, Vector3.UP)
+
+
+func get_input_vector():
+	var input_vector = Vector3.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector.z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	
+	return input_vector.normalized()
+
+func apply_movement(input_vector):
+	direction.x = input_vector.x * max_speed
+	direction.z = input_vector.z * max_speed
+	
+	
+func apply_gravity(delta):
+	direction.y -= gravity * delta
 
 func _physics_process(delta):
 	
