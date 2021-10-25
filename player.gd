@@ -63,16 +63,18 @@ func apply_movement(input_vector):
 	velocity.z = input_vector.z * speed
 	
 	if input_vector != Vector3.ZERO:
-		pivot.look_at(translation + input_vector, Vector3.UP)
-		look_position = translation + input_vector
 		if (Globals.online && is_network_master()):
+			pivot.look_at(translation + input_vector, Vector3.UP)
+			look_position = (translation + input_vector)
 			rpc_unreliable("_set_rotation", look_position)
+		elif (Globals.online == false):
+			pivot.look_at(translation + input_vector, Vector3.UP)
+			look_position = translation + input_vector
 	
 	
 func apply_gravity(delta):
 	velocity.y -= gravity * delta
 
-	
 	if velocity != Vector3.ZERO:
 		move_and_slide(velocity * 4, Vector3.UP)
 		if (Globals.online && is_network_master()):
