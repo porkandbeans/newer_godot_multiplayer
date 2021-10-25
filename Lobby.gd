@@ -10,12 +10,14 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_ButtonHost_pressed():
+	Globals.online = true
 	net.create_server(6969, 2)
 	get_tree().set_network_peer(net)
 	print("hosting")
 
 #	connect to Captain Britain
 func _on_ButtonJoin_pressed():
+	Globals.online = true
 	net.create_client("86.169.30.194", 6969)
 	get_tree().set_network_peer(net)
 	print("Connected")
@@ -28,9 +30,11 @@ func _player_connected(id):
 
 #	connect to yourself
 func _on_ButtonJoinLocal_pressed():
+	Globals.online = true
 	net.create_client("127.0.0.1", 6969)
 	get_tree().set_network_peer(net)
 	print("Connected")
 
 func _on_SoloButton_pressed():
+	Globals.online = false
 	get_tree().change_scene("res://soloGame.tscn")

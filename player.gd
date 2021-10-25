@@ -1,12 +1,14 @@
 extends KinematicBody
 
 remote func _set_position(pos):
-	global_transform.origin = pos
-	#set_rotation_degrees(rot)
-	#pivot.look_at(rot, Vector3.UP)
+	if (Globals.online):
+		global_transform.origin = pos
+		#set_rotation_degrees(rot)
+		#pivot.look_at(rot, Vector3.UP)
 
 remote func _set_rotation(rot: Vector3):
-	pivot.look_at(rot, Vector3.UP)
+	if (Globals.online):
+		pivot.look_at(rot, Vector3.UP)
 
 func add_stamina(value):
 	stamina += value
@@ -60,11 +62,10 @@ func apply_movement(input_vector):
 	velocity.x = input_vector.x * speed
 	velocity.z = input_vector.z * speed
 	
-	if is_network_master():
-		if input_vector != Vector3.ZERO:
-			
-			pivot.look_at(translation + input_vector, Vector3.UP)
-			look_position = translation + input_vector
+	if input_vector != Vector3.ZERO:
+		pivot.look_at(translation + input_vector, Vector3.UP)
+		look_position = translation + input_vector
+		if (Globals.online && is_network_master()):
 			rpc_unreliable("_set_rotation", look_position)
 	
 	
@@ -73,8 +74,8 @@ func apply_gravity(delta):
 
 	
 	if velocity != Vector3.ZERO:
-		if is_network_master():
-			move_and_slide(velocity * 4, Vector3.UP)
+		move_and_slide(velocity * 4, Vector3.UP)
+		if (Globals.online && is_network_master()):
 			rpc_unreliable("_set_position", global_transform.origin)
 
 func jump():
