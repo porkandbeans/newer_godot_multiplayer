@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://soloGame.gd" type="Script" id=1]
 [ext_resource path="res://pause.gd" type="Script" id=2]
 [ext_resource path="res://PickUp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://staminaCharge.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/healthbarover.png" type="Texture" id=5]
+[ext_resource path="res://StaminaBar.gd" type="Script" id=6]
+[ext_resource path="res://UI/healthbarunder.png" type="Texture" id=7]
+[ext_resource path="res://UI/healthbarfill.png" type="Texture" id=8]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -48,6 +52,28 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.211765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaBarController" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaBar" type="TextureProgress" parent="CanvasLayer/StaminaBarController"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 18.2001
+margin_top = 492.154
+margin_right = 218.2
+margin_bottom = 542.154
+texture_under = ExtResource( 7 )
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
