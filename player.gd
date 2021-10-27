@@ -14,6 +14,7 @@ remote func _set_rotation(rot: Vector3):
 
 func add_stamina(value):
 	stamina += value
+	emit_signal("stamchange", stamina)
 
 var max_stamina = 50
 var stamina = 50
@@ -27,6 +28,7 @@ var jump_impulse = 15
 var jump_num = 0
 var fall = Vector3()
 
+signal stamchange(val)
 
 var look_position
 
@@ -87,9 +89,16 @@ func jump():
 			velocity.y = jump_impulse
 			jump_num = 1
 			stamina -= 10
+			emit_signal("stamchange", stamina)
 
 	if not is_on_floor() and Input.is_action_just_pressed("Jump"):
 		if  jump_num <= stamina:
 			velocity.y = jump_impulse
 			jump_num += 1
 			stamina -= 10
+			emit_signal("stamchange", stamina)
+
+
+func _on_Control_ready():
+	
+	pass # Replace with function body.

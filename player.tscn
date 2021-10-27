@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://UI/healthbarunder.png" type="Texture" id=2]
+[ext_resource path="res://UI/healthbarover.png" type="Texture" id=3]
+[ext_resource path="res://UI/healthbarfill.png" type="Texture" id=4]
+[ext_resource path="res://StaminaBar.gd" type="Script" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -31,3 +35,27 @@ shape = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.755705, 0.654912, 0, -0.654912, 0.755705, 0, 27.912, 23.7868 )
+
+[node name="Control" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -124.0
+margin_right = 389.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaBar" type="TextureProgress" parent="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -72.0711
+margin_right = 225.0
+margin_bottom = -22.0711
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
