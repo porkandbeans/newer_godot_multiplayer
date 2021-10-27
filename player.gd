@@ -14,10 +14,9 @@ remote func _set_rotation(rot: Vector3):
 
 func add_stamina(value):
 	stamina += value
-	emit_signal("stamchange", stamina)
 
 var max_stamina = 50
-var stamina = 50
+var stamina = 10
 var speed
 var walk_speed = 6
 var run_speed = 13
@@ -42,18 +41,31 @@ func _ready():
 func _physics_process(delta):
 	speed = walk_speed
 	
+	if is_on_floor() && stamina <= max_stamina:
+		stamina += 10*delta
+		
+	
 	if is_on_floor():
 		jump_num = 0
 	var input_vector = get_input_vector()
 	
-	if Input.is_action_pressed("sprint"):
+	
+	if Input.is_action_pressed("sprint") && stamina >= 0:
 		speed = run_speed
-		
+		stamina -= 15*delta
+	elif stamina <= 0:
+			speed = walk_speed
+	
 	apply_movement(input_vector)
 	apply_gravity(delta)
 	jump()
 	velocity = move_and_slide(velocity, Vector3.UP)
+	
+	emit_signal("stamchange", stamina)
+# end of physics_process
 
+
+	
 func get_input_vector():
 	var input_vector = Vector3.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -89,14 +101,12 @@ func jump():
 			velocity.y = jump_impulse
 			jump_num = 1
 			stamina -= 10
-			emit_signal("stamchange", stamina)
 
 	if not is_on_floor() and Input.is_action_just_pressed("Jump"):
 		if  jump_num <= stamina:
 			velocity.y = jump_impulse
 			jump_num += 1
 			stamina -= 10
-			emit_signal("stamchange", stamina)
 
 
 func _on_Control_ready():
