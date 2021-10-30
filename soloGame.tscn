@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://soloGame.gd" type="Script" id=1]
 [ext_resource path="res://pause.gd" type="Script" id=2]
-[ext_resource path="res://PickUp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PickUpStam.tscn" type="PackedScene" id=3]
 [ext_resource path="res://staminaCharge.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PickUpSpeed.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PickUpJumps.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Jumps.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -29,7 +32,7 @@ transform = Transform( 7.85831, 0, 0, 0, 0.122327, 0, 0, 0, 4.20225, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="player1Pos" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.673148, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.071, 0.673148, 24.2729 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -52,8 +55,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PickUp" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247082, 0.792025, 13.5245 )
-
 [node name="staminaCharge" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01499, 0.179693, 13.9274 )
+
+[node name="pickups" type="Spatial" parent="."]
+
+[node name="stamina" type="Spatial" parent="pickups"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0959, 0, -22.2039 )
+
+[node name="PickUp" parent="pickups/stamina" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247082, 0.792025, 13.5245 )
+
+[node name="PickUp2" parent="pickups/stamina" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247082, 0.792025, 18.2869 )
+
+[node name="PickUp3" parent="pickups/stamina" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247082, 0.792025, 23.1026 )
+
+[node name="PickUp4" parent="pickups/stamina" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247082, 0.792025, 27.5571 )
+
+[node name="speed" type="Spatial" parent="pickups"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.87832, 0.178198, 0.646966 )
+
+[node name="PickUpSpeed" parent="pickups/speed" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 )
+
+[node name="PickUpSpeed2" parent="pickups/speed" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -2.33956 )
+
+[node name="PickUpSpeed3" parent="pickups/speed" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5.20269 )
+
+[node name="JumpHeight" type="Spatial" parent="pickups"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 9.98982 )
+
+[node name="PickUpJumps" parent="pickups/JumpHeight" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.768892, 1.12262, -8.55609 )
+
+[node name="PickUpJumps2" parent="pickups/JumpHeight" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.768892, 1.12262, -11.4426 )
+
+[node name="PickUpJumps3" parent="pickups/JumpHeight" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.768892, 1.12262, -14.8242 )
+
+[node name="jumps" type="Spatial" parent="pickups"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.67824, 0, 0 )
+
+[node name="Jumps" parent="pickups/jumps" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30911, 1.12233, 2.71138 )
+
+[node name="Jumps2" parent="pickups/jumps" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30911, 1.12233, 0.139409 )
+
+[node name="Jumps3" parent="pickups/jumps" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30911, 1.12233, -2.45037 )
+
+[node name="Jumps4" parent="pickups/jumps" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30911, 1.12233, -5.14916 )

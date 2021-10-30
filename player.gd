@@ -12,18 +12,17 @@ remote func _set_rotation(rot: Vector3):
 		pivot.rotation.x = 0
 		pivot.rotation.z = 0
 
-func add_stamina(value):
-	stamina += value
-
 var max_stamina = 50
-var stamina = 10
+var stamina = 50
+var max_jumps = 10
+var jumps = 10
 var speed
 var walk_speed = 6
-var run_speed = 13
+var run_speed = 12
 #var running = false
 
 var gravity = 25
-var jump_impulse = 15
+var jump_impulse = 10
 var jump_num = 0
 var fall = Vector3()
 
@@ -40,11 +39,7 @@ func _ready():
 
 func _physics_process(delta):
 	speed = walk_speed
-	
-	if is_on_floor() && stamina <= max_stamina:
-		stamina += 10*delta
-		
-	
+
 	if is_on_floor():
 		jump_num = 0
 	var input_vector = get_input_vector()
@@ -100,13 +95,13 @@ func jump():
 		if jump_num == 0:
 			velocity.y = jump_impulse
 			jump_num = 1
-			stamina -= 10
+			jumps -= 10
 
 	if not is_on_floor() and Input.is_action_just_pressed("Jump"):
-		if  jump_num <= stamina:
+		if  jump_num <= jumps:
 			velocity.y = jump_impulse
 			jump_num += 1
-			stamina -= 10
+			jumps -= 10
 
 
 func _on_Control_ready():
