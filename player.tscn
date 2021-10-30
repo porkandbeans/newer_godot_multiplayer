@@ -37,6 +37,7 @@ shape = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.755705, 0.654912, 0, -0.654912, 0.755705, 0, 27.912, 23.7868 )
+far = 2166.1
 
 [node name="Control" type="Control" parent="."]
 anchor_top = 1.0

@@ -18,7 +18,7 @@ func _on_ButtonHost_pressed():
 #	connect to Captain Britain
 func _on_ButtonJoin_pressed():
 	Globals.online = true
-	net.create_client("86.169.30.194", 6969)
+	net.create_client("86.149.166.192", 6969)
 	get_tree().set_network_peer(net)
 	print("Connected")
 
