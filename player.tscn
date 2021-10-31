@@ -35,10 +35,6 @@ material/0 = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 4 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.755705, 0.654912, 0, -0.654912, 0.755705, 0, 27.912, 23.7868 )
-far = 2166.1
-
 [node name="Control" type="Control" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -62,3 +58,12 @@ texture_progress = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SpringArm" type="SpringArm" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0811377, 12.3945, 0 )
+spring_length = 22.537
+margin = 5.931
+
+[node name="Camera" type="Camera" parent="SpringArm"]
+transform = Transform( 1, 0, 0, 0, 0.821508, 0.570197, 0, -0.570197, 0.821508, 0, 0, 0 )
+far = 2166.1

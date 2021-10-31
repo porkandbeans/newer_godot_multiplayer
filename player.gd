@@ -33,12 +33,17 @@ var look_position
 var velocity = Vector3.ZERO
 
 onready var pivot = $Pivot
+onready var camera = $ClippedCameraMainScene
 
 func _ready():
+	print(camera)
 	pass
 
 # === PHYSICS PROCESS ===
 func _physics_process(delta):
+	if(!Globals.online || is_network_master()):
+		camera
+	
 	speed = walk_speed
 
 	if is_on_floor():
@@ -47,10 +52,11 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_pressed("sprint") && stamina >= 0:
-		speed = run_speed
-		stamina -= 15*delta
-	elif stamina <= 0:
-			speed = walk_speed
+		if(input_vector != Vector3.ZERO): # don't eat stamina if we're not actually moving
+			speed = run_speed
+			stamina -= 15*delta
+	#elif stamina <= 0:
+	#		speed = walk_speed
 	
 	apply_movement(input_vector)
 	apply_gravity(delta)
