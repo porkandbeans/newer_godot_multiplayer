@@ -30,13 +30,14 @@ signal stamchange(val)
 
 var look_position
 
-var velocity =- Vector3.ZERO
+var velocity = Vector3.ZERO
 
 onready var pivot = $Pivot
 
 func _ready():
 	pass
 
+# === PHYSICS PROCESS ===
 func _physics_process(delta):
 	speed = walk_speed
 
@@ -57,7 +58,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	emit_signal("stamchange", stamina)
-# end of physics_process
+# === end of physics_process ===
 
 
 	
