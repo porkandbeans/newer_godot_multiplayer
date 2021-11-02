@@ -27,6 +27,7 @@ var jump_num = 0
 var fall = Vector3()
 
 signal stamchange(val)
+signal jumpschange(val)
 
 var look_position
 
@@ -46,7 +47,7 @@ func _physics_process(delta):
 	
 	speed = walk_speed
 
-	if is_on_floor():
+	if is_on_floor() && jump_num <= jumps:
 		jump_num = 0
 	var input_vector = get_input_vector()
 	
@@ -64,6 +65,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	emit_signal("stamchange", stamina)
+	emit_signal("jumpschange", jumps)
 # === end of physics_process ===
 
 

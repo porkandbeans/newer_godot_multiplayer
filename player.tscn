@@ -59,6 +59,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="JumpsBar" type="TextureProgress" parent="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -131.071
+margin_right = 225.0
+margin_bottom = -81.0711
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SpringArm" type="SpringArm" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0811377, 12.3945, 0 )
 spring_length = 22.537
