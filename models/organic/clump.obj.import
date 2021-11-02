@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/clump.obj-8155aa214e67cf8b343d8e12fe25c49e.mesh"
+
+[deps]
+
+files=[ "res://.import/clump.obj-8155aa214e67cf8b343d8e12fe25c49e.mesh" ]
+
+source_file="res://models/organic/clump.obj"
+dest_files=[ "res://.import/clump.obj-8155aa214e67cf8b343d8e12fe25c49e.mesh", "res://.import/clump.obj-8155aa214e67cf8b343d8e12fe25c49e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

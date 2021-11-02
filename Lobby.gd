@@ -24,7 +24,7 @@ func _on_ButtonJoin_pressed():
 
 func _player_connected(id):
 	Globals.player2id = id # defined in globals.gd
-	var game = preload("res://Game.tscn").instance()
+	var game = preload("res://scenes/Game.tscn").instance()
 	get_tree().get_root().add_child(game) # loads the new scene
 	hide() # hides the lobby
 
@@ -37,4 +37,4 @@ func _on_ButtonJoinLocal_pressed():
 
 func _on_SoloButton_pressed():
 	Globals.online = false
-	get_tree().change_scene("res://soloGame.tscn")
+	get_tree().change_scene("res://scenes/soloGame.tscn")
