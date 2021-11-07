@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 1, 0.513726, 0, 0.521569 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.357955 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="CurveTexture" id=4]
+
+[sub_resource type="ParticlesMaterial" id=5]
+trail_size_modifier = SubResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 1, 0 )
+angular_velocity = 1.0
+scale_curve = SubResource( 3 )
+
+[sub_resource type="QuadMesh" id=6]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Particles" type="Particles" parent="."]
+material_override = SubResource( 1 )
+amount = 30
+lifetime = 4.0
+speed_scale = 3.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 6 )
