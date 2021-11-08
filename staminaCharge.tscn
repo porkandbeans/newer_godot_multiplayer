@@ -7,6 +7,10 @@
 [sub_resource type="CylinderMesh" id=2]
 
 [sub_resource type="SpatialMaterial" id=3]
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 albedo_color = Color( 1, 0.631373, 0, 0.67451 )
 
 [sub_resource type="Curve" id=4]
@@ -19,6 +23,7 @@ curve = SubResource( 4 )
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3( 0, 1, 0 )
+spread = 74.3
 gravity = Vector3( 0, 1, 0 )
 initial_velocity = 1.0
 initial_velocity_random = 1.0
@@ -48,7 +53,7 @@ material/0 = null
 [node name="Particles" type="Particles" parent="Area"]
 transform = Transform( 0.989964, 0, 0, 0, 0.989963, 0, 0, 0, 0.989964, 0, 1.02561, 0 )
 material_override = SubResource( 3 )
-amount = 30
+amount = 50
 visibility_aabb = AABB( -1.03717, -1.04714, -0.872908, 2.07435, 2.09428, 1.74582 )
 process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 7 )
