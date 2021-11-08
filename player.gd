@@ -34,16 +34,10 @@ var look_position
 var velocity = Vector3.ZERO
 
 onready var pivot = $Pivot
-onready var camera = $ClippedCameraMainScene
 
-func _ready():
-	print(camera)
-	pass
 
 # === PHYSICS PROCESS ===
 func _physics_process(delta):
-	if(!Globals.online || is_network_master()):
-		camera
 	
 	speed = walk_speed
 

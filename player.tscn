@@ -78,9 +78,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0811377, 12.3945, 0 )
 spring_length = 22.537
 margin = 5.931
 
-[node name="Camera" type="Camera" parent="SpringArm"]
+[node name="Camera" type="Camera" parent="SpringArm" groups=[
+"camera",
+]]
 transform = Transform( 1, 0, 0, 0, 0.821508, 0.570197, 0, -0.570197, 0.821508, 0, 0, 0 )
-far = 2166.1
+far = 1545.9
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.98213, 0 )
