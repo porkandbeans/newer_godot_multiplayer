@@ -115,4 +115,5 @@ far = 1545.9
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.98213, 0 )
+visible = false
 omni_range = 27.4
