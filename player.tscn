@@ -9,6 +9,7 @@
 [sub_resource type="SphereMesh" id=5]
 
 [sub_resource type="SpatialMaterial" id=3]
+flags_unshaded = true
 
 [sub_resource type="SpatialMaterial" id=6]
 flags_unshaded = true
@@ -20,7 +21,7 @@ particles_anim_loop = false
 [sub_resource type="SpatialMaterial" id=7]
 
 [sub_resource type="Curve" id=8]
-_data = [ Vector2( 0, 0.0488636 ), 0.0, 0.0, 0, 0, Vector2( 0.0526316, 1 ), -1.10545, -1.10545, 0, 0, Vector2( 0.651316, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.0488636 ), 0.0, 0.0, 0, 0, Vector2( 0.0526316, 0.681818 ), -1.10545, -1.10545, 0, 0, Vector2( 0.651316, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=9]
 curve = SubResource( 8 )
@@ -53,7 +54,8 @@ material/0 = SubResource( 3 )
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.897604, 0 )
 material_override = SubResource( 6 )
 amount = 50
-visibility_aabb = AABB( -2.02574, -2.15223, -1.94942, 4.05149, 4.30445, 3.89885 )
+speed_scale = 2.0
+visibility_aabb = AABB( -2.02574, -2.17713, -1.94942, 4.05149, 4.30445, 3.89885 )
 local_coords = false
 process_material = SubResource( 10 )
 draw_pass_1 = SubResource( 11 )
